@@ -28,7 +28,6 @@ class _LoginPageState extends State<LoginPage> {
     var passwordcontroller = TextEditingController();
 
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           children: [

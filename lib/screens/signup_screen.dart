@@ -16,7 +16,6 @@ class SignupPage extends StatelessWidget {
     var passwordcontroller = TextEditingController();
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           children: [
