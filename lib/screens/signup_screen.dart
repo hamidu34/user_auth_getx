@@ -1,34 +1,22 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
 import 'package:user_auth_getx/controller/auth_controller.dart';
-import 'package:user_auth_getx/screens/signup_screen.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatelessWidget {
+  const SignupPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     var style = Theme.of(context);
-    var headstyle =
-        style.textTheme.displayMedium!.copyWith(color: Colors.black);
-    var subheadstyle = style.textTheme.headlineSmall!
-        .copyWith(color: Colors.grey, fontSize: 20);
     var btnstyle = style.textTheme.headlineSmall!.copyWith(color: Colors.white);
     var emailcontroller = TextEditingController();
     var passwordcontroller = TextEditingController();
 
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -42,20 +30,11 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Container(
               width: w,
-              height: h * 0.6,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'HELLO',
-                    style: headstyle,
-                  ),
-                  Text(
-                    'Sign into your account',
-                    style: subheadstyle,
-                  ),
-                  const Gap(30),
+                  const Gap(60),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -100,22 +79,12 @@ class _LoginPageState extends State<LoginPage> {
                               borderRadius: BorderRadius.circular(20))),
                     ),
                   ),
-                  const Gap(10),
-                  Row(
-                    children: [
-                      Expanded(child: Container()),
-                      Text(
-                        'forgot your password?',
-                        style: subheadstyle,
-                      ),
-                    ],
-                  ),
                   const Gap(40),
                   Center(
                     child: InkWell(
                       onTap: () {
                         HapticFeedback.selectionClick();
-                        AuthController.instance.login(
+                        AuthController.instance.register(
                             emailcontroller.text.trim(),
                             passwordcontroller.text.trim());
                       },
@@ -130,31 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                                 image: AssetImage('img/loginbtn.png'))),
                         child: Center(
                             child: Text(
-                          'Sign in',
+                          'Sign up',
                           style: btnstyle,
                         )),
-                      ),
-                    ),
-                  ),
-                  const Gap(20),
-                  Center(
-                    child: RichText(
-                      text: TextSpan(
-                        text: 'Don\'t have an account?',
-                        style: subheadstyle,
-                        children: [
-                          TextSpan(
-                            text: 'Create',
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                HapticFeedback.selectionClick();
-                                Get.to(() => const SignupPage());
-                              },
-                            style: subheadstyle.copyWith(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
                       ),
                     ),
                   ),
