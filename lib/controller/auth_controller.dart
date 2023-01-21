@@ -62,7 +62,6 @@ class AuthController extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } catch (e) {
-      print(e.toString());
       Get.snackbar(
         "About Login",
         'Login message',
