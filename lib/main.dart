@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:user_auth_getx/controller/auth_controller.dart';
+import 'package:user_auth_getx/helper/init_depencies.dart';
 import 'package:user_auth_getx/screens/login_screen.dart';
 
 Future<void> main() async {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: InitDep(),
       title: 'Flutter Demo',
       theme: ThemeData(colorSchemeSeed: const Color.fromARGB(255, 250, 0, 167)),
       home: const LoginPage(),

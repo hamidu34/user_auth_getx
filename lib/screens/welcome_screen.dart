@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:user_auth_getx/controller/auth_controller.dart';
+import 'package:user_auth_getx/screens/cart_screen.dart';
 import 'package:user_auth_getx/screens/login_screen.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -46,26 +47,54 @@ class WelcomePage extends StatelessWidget {
               ),
               const Gap(40),
               Center(
-                child: InkWell(
-                  onTap: () {
-                    HapticFeedback.selectionClick();
-                    AuthController.instance.logout();
-                  },
-                  borderRadius: BorderRadius.circular(30),
-                  child: Container(
-                    width: w * 0.5,
-                    height: h * 0.07,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        image: const DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage('img/loginbtn.png'))),
-                    child: Center(
-                        child: Text(
-                      'Sign out',
-                      style: btnstyle,
-                    )),
-                  ),
+                child: Column(
+                  children: [
+                    //sign out
+                    InkWell(
+                      onTap: () {
+                        HapticFeedback.selectionClick();
+                        AuthController.instance.logout();
+                      },
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        width: w * 0.5,
+                        height: h * 0.07,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            image: const DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage('img/loginbtn.png'))),
+                        child: Center(
+                            child: Text(
+                          'Sign out',
+                          style: btnstyle,
+                        )),
+                      ),
+                    ),
+                    const Gap(20),
+                    // move to shopping cart
+                    InkWell(
+                      onTap: () {
+                        HapticFeedback.selectionClick();
+                        Get.to(() => const ShoppingCart());
+                      },
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        width: w * 0.5,
+                        height: h * 0.07,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            image: const DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage('img/loginbtn.png'))),
+                        child: Center(
+                            child: Text(
+                          'Shopping cart',
+                          style: btnstyle,
+                        )),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ]),
